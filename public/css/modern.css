@@ -1,0 +1,1688 @@
+/* ACI Marine Modern & Stylish Design Enhancements */
+
+:root {
+    --primary-glow: rgba(39, 168, 68, 0.35);
+    --secondary-glow: rgba(39, 168, 68, 0.35);
+    --dark-bg-glass: rgba(10, 15, 20, 0.65);
+    --light-bg-glass: rgba(255, 255, 255, 0.85);
+    --glow-color: #27a844;
+    --red-glow: #27a844;
+}
+
+/* Global Smooth Transitions */
+* {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Scrollbar Modernization */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0f14;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--glow-color);
+}
+
+/* Premium Capsule Header */
+header.header_v2 {
+    border-radius: 30px !important;
+    background: rgba(10, 15, 20, 0.5) !important;
+    backdrop-filter: blur(30px) !important;
+    -webkit-backdrop-filter: blur(30px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.05) !important;
+}
+
+header.header_v2.header-scrolled {
+    background: rgba(255, 255, 255, 0.88) !important;
+    backdrop-filter: blur(30px) !important;
+    -webkit-backdrop-filter: blur(30px) !important;
+    border-color: rgba(246, 0, 0, 0.08) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Hero Section Editorial Card Override */
+.splide__slide .overlay .container-fluid>.flex {
+    background: rgba(10, 15, 20, 0.65) !important;
+    backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+    border-left: 5px solid var(--accent-01) !important;
+    padding: 2.5rem 3rem !important;
+}
+
+/* Slider background watermarks (01, 02, 03) removed completely */
+.hero_v2-home .overlay [data-slide-number]::before {
+    display: none !important;
+}
+
+/* Force hero section and splide containers to start at top 0 with exactly 100vh height */
+.hero_v2,
+.hero_v2-home,
+#heroSlider,
+.splide,
+.splide__track,
+.splide__list,
+.splide__slide {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    top: 0 !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+}
+
+/* Fix Vimeo background video scaling and remove black spaces (aspect ratio cover) */
+.hero_v2-home .splide__slide .video-wrapper {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    overflow: hidden !important;
+    z-index: 0 !important;
+}
+
+.hero_v2-home .splide__slide .video-wrapper iframe {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 100vw !important;
+    height: 56.25vw !important;
+    /* 16:9 aspect ratio */
+    min-height: 100vh !important;
+    min-width: 177.78vh !important;
+    z-index: -1 !important;
+    border: none !important;
+}
+
+.splide__slide .overlay .container-fluid>.flex:hover {
+    transform: translateY(-5px) scale(1.01) !important;
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Modern Glass Bottom Slider Nav */
+.hero_v2-home-nav {
+    border-radius: 30px !important;
+    background: rgba(10, 15, 20, 0.5) !important;
+    backdrop-filter: blur(30px) !important;
+    -webkit-backdrop-filter: blur(30px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Slider indicators styling */
+.slide-index {
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+}
+
+.slide-index:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    color: #ffffff !important;
+}
+
+.slide-index.bg-white,
+.slide-index.bg-anthracite-100 {
+    background: linear-gradient(135deg, #27a844, #1b7430) !important;
+    box-shadow: 0 0 25px rgba(39, 168, 68, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Product Cards Upgrades */
+.aci-prod-card {
+    background: #0d0f11 !important;
+    border: 1px solid rgba(255, 255, 255, 0.04) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+    border-radius: 24px !important;
+    overflow: hidden;
+}
+
+.aci-prod-card:hover {
+    transform: translateY(-10px) !important;
+    border-color: rgba(39, 168, 68, 0.35) !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(39, 168, 68, 0.25) !important;
+}
+
+.aci-prod-img-wrap {
+    height: 260px !important;
+}
+
+.aci-prod-body {
+    background: #0d0f11 !important;
+}
+
+.aci-prod-hover-panel {
+    background: rgba(13, 15, 17, 0.92) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-radius: 24px !important;
+}
+
+.aci-prod-btn {
+    border-radius: 99px !important;
+    padding: 0.8rem 1.8rem !important;
+    border-color: rgba(39, 168, 68, 0.4) !important;
+    background: rgba(39, 168, 68, 0.05) !important;
+}
+
+.aci-prod-btn:hover {
+    background: #27a844 !important;
+    border-color: transparent !important;
+    box-shadow: 0 10px 25px rgba(39, 168, 68, 0.4) !important;
+}
+
+/* News Cards Upgrades */
+.aci-news-card {
+    background: rgba(255, 255, 255, 0.65) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 28px !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+}
+
+.aci-news-card:hover {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-color: rgba(39, 168, 68, 0.25) !important;
+    box-shadow: 0 40px 80px rgba(39, 168, 68, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+}
+
+.aci-news-card::before {
+    background: linear-gradient(90deg, #27a844, #1b7430) !important;
+}
+
+.aci-news-link {
+    background: #111315 !important;
+    border-radius: 99px !important;
+    padding: 0.8rem 1.8rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.aci-news-link:hover {
+    background: #27a844 !important;
+    box-shadow: 0 10px 25px rgba(39, 168, 68, 0.4) !important;
+    border-color: transparent !important;
+}
+
+/* Story and Gallery Section */
+.aci-gallery-item {
+    border-radius: 24px !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3) !important;
+}
+
+.aci-gallery-item:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+    border-color: rgba(39, 168, 68, 0.3) !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(39, 168, 68, 0.15) !important;
+}
+
+/* Make dropdown menu solid white and full screen with glowing ambient background orbs */
+header.header_v2 #dropDownMenu,
+#dropDownMenu {
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    position: fixed !important;
+    overflow: hidden !important;
+}
+
+#dropDownMenu::before,
+#dropDownMenu::after {
+    content: '' !important;
+    position: absolute !important;
+    width: 600px !important;
+    height: 600px !important;
+    border-radius: 50% !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+    opacity: 0.12 !important;
+    filter: blur(140px) !important;
+    animation: pulseGlowOrbs 12s ease-in-out infinite alternate !important;
+}
+
+#dropDownMenu::before {
+    top: -10% !important;
+    left: -10% !important;
+    background: radial-gradient(circle, #27a844, transparent 70%) !important;
+}
+
+#dropDownMenu::after {
+    bottom: -10% !important;
+    right: -10% !important;
+    background: radial-gradient(circle, #00bfa5, transparent 70%) !important;
+    animation-delay: -6s !important;
+}
+
+@keyframes pulseGlowOrbs {
+    0% {
+        transform: scale(1) translate(0, 0);
+        opacity: 0.08;
+    }
+
+    100% {
+        transform: scale(1.3) translate(50px, -30px);
+        opacity: 0.18;
+    }
+}
+
+/* Menu panel futuristic overlay - Expanded to full-screen solid white */
+.menu-panel_v2 {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+    max-height: 100vh !important;
+    border-radius: 0 !important;
+    height: 100vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 10 !important;
+}
+
+/* Override slide-up state transitions and add entrance transitions */
+header.header_v2 #dropDownMenu.visible .menu-panel_v2,
+#dropDownMenu.visible .menu-panel_v2 {
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Staggered entrance animation states for modal items */
+.custom-modal-left .logo-holder,
+.custom-modal-left h2,
+.custom-modal-left .modal-intro,
+.custom-modal-right {
+    opacity: 0 !important;
+    transform: translateY(24px) !important;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#dropDownMenu.visible .custom-modal-left .logo-holder {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition-delay: 0.1s !important;
+}
+
+#dropDownMenu.visible .custom-modal-left h2 {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition-delay: 0.18s !important;
+}
+
+#dropDownMenu.visible .custom-modal-left .modal-intro {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition-delay: 0.24s !important;
+}
+
+#dropDownMenu.visible .custom-modal-right {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition-delay: 0.32s !important;
+}
+
+/* Staggered Modal Nav Links - Premium Redesign (Light Theme) */
+.modal-nav-link {
+    border-radius: 16px !important;
+    background: rgba(0, 0, 0, 0.02) !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    padding: 18px 24px !important;
+    font-size: 1.3rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+    color: #1e293b !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    backdrop-filter: blur(8px) !important;
+    z-index: 1 !important;
+}
+
+/* Color safety overrides to prevent links from turning black when header is scrolled */
+#dropDownMenu .modal-nav-link,
+header.header_v2.header-scrolled #dropDownMenu nav a,
+header.header_v2.header-scrolled .modal-nav-link,
+header.header_v2.header-scrolled #dropDownMenu .modal-nav-link {
+    color: #1e293b !important;
+}
+
+#dropDownMenu .modal-nav-link:hover,
+header.header_v2.header-scrolled #dropDownMenu nav a:hover,
+header.header_v2.header-scrolled .modal-nav-link:hover,
+header.header_v2.header-scrolled #dropDownMenu .modal-nav-link:hover {
+    color: #27a844 !important;
+}
+
+.modal-nav-link::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: 4px !important;
+    height: 100% !important;
+    background: linear-gradient(180deg, #27a844, #00bfa5) !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    transform: scaleY(0) !important;
+    transform-origin: center !important;
+    opacity: 0 !important;
+    z-index: 2 !important;
+}
+
+.modal-nav-link::after {
+    content: '\2192' !important;
+    font-size: 1.4rem !important;
+    color: rgba(39, 168, 68, 0.8) !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    transform: translateX(-15px) !important;
+    opacity: 0 !important;
+    font-family: system-ui, -apple-system, sans-serif !important;
+    z-index: 2 !important;
+}
+
+.modal-nav-link:hover {
+    background: rgba(39, 168, 68, 0.05) !important;
+    color: #27a844 !important;
+    border-color: rgba(39, 168, 68, 0.2) !important;
+    transform: translateX(8px) !important;
+    box-shadow: 0 12px 24px rgba(39, 168, 68, 0.04), 0 0 15px rgba(39, 168, 68, 0.01) !important;
+    padding-left: 32px !important;
+}
+
+.modal-nav-link:hover::before {
+    transform: scaleY(1) !important;
+    opacity: 1 !important;
+}
+
+.modal-nav-link:hover::after {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    color: #00bfa5 !important;
+}
+
+/* Modal close button hover effect - Light Theme Glass Ring */
+.modal-close-btn {
+    position: fixed !important;
+    top: 30px !important;
+    right: 40px !important;
+    width: 54px !important;
+    height: 54px !important;
+    border-radius: 50% !important;
+    background: rgba(0, 0, 0, 0.03) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #1e293b !important;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    z-index: 9999 !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+
+.modal-close-btn:hover {
+    color: #ef4444 !important;
+    background: rgba(239, 68, 68, 0.1) !important;
+    border-color: rgba(239, 68, 68, 0.3) !important;
+    transform: scale(1.1) rotate(90deg) !important;
+    box-shadow: 0 12px 24px rgba(239, 68, 68, 0.15), 0 0 15px rgba(239, 68, 68, 0.05) !important;
+}
+
+/* Contact Cards inside Modal - High-Tech Light Glass Console */
+.modal-contact-card {
+    border-radius: 28px !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    padding: 2.5rem !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.modal-contact-card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 3px !important;
+    background: linear-gradient(90deg, #27a844, #00bfa5, #27a844) !important;
+    background-size: 200% auto !important;
+    animation: animateBorderGradient 4s linear infinite !important;
+}
+
+@keyframes animateBorderGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.modal-contact-card:hover {
+    border-color: rgba(39, 168, 68, 0.25) !important;
+    box-shadow: 0 35px 75px rgba(0, 0, 0, 0.08), 0 0 30px rgba(39, 168, 68, 0.1) !important;
+    transform: translateY(-4px) !important;
+}
+
+.modal-contact-label {
+    font-size: 0.75rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.15em !important;
+    color: #27a844 !important;
+    font-weight: 800 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.modal-contact-phone,
+.modal-contact-email {
+    color: #0f172a !important;
+    font-weight: 700 !important;
+    transition: all 0.3s ease !important;
+}
+
+.modal-contact-phone:hover,
+.modal-contact-email:hover {
+    color: #00bfa5 !important;
+    text-shadow: 0 0 10px rgba(0, 191, 165, 0.1) !important;
+}
+
+.modal-cta-btn {
+    border-radius: 99px !important;
+    background: linear-gradient(135deg, #27a844, #00bfa5) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    box-shadow: 0 10px 20px rgba(39, 168, 68, 0.2) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.modal-cta-btn:hover {
+    background: linear-gradient(135deg, #00bfa5, #27a844) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 15px 30px rgba(39, 168, 68, 0.3) !important;
+}
+
+/* Wave reveal upgrades */
+.logo-reveal-container {
+    background: radial-gradient(circle, rgba(39, 168, 68, 0.06) 0%, transparent 70%);
+    padding: 2rem;
+    border-radius: 50%;
+}
+
+/* Projects Page Carousel Cards */
+.project-carousel-card {
+    min-height: 220px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-carousel-card.active {
+    border-color: #F60000 !important;
+    box-shadow: 0 0 35px rgba(246, 0, 0, 0.3) !important;
+}
+
+.project-carousel-card .project-status-badge {
+    transition: all 0.3s ease;
+}
+
+/* =============================================
+   PROJECTS PAGE - WHITE THEME OVERRIDES
+   ============================================= */
+
+/* Main Container */
+main.main.bg-\[\#f8fafc\] {
+    background-color: #f8fafc !important;
+    color: #1e293b !important;
+}
+
+/* Orbs opacity reduction */
+main.main.bg-\[\#f8fafc\] .floating-orb {
+    opacity: 0.03 !important;
+}
+
+/* Reference Projects Section */
+main.main.bg-\[\#f8fafc\] section.bg-\[\#080b0f\] {
+    background-color: #f1f5f9 !important;
+    border-bottom-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+main.main.bg-\[\#f8fafc\] section.bg-\[\#080b0f\] h2 {
+    color: #1e293b !important;
+}
+
+main.main.bg-\[\#f8fafc\] section.bg-\[\#080b0f\] p {
+    color: #475569 !important;
+}
+
+/* Carousel Section & Cards Modernization */
+main.main.bg-\[\#f8fafc\] section.bg-\[\#080b0f\] {
+    background-color: #f8fafc !important;
+    /* Blends with general light theme */
+    border-bottom-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Dim inactive cards when container is hovered to focus on current card */
+main.main.bg-\[\#f8fafc\] section.bg-\[\#080b0f\]:hover .project-carousel-card:not(:hover) {
+    opacity: 0.65 !important;
+    filter: blur(0.2px) grayscale(10%);
+    transform: scale(0.985);
+}
+
+.project-carousel-card {
+    background: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+    transform: translateZ(0);
+    will-change: transform, border-color, box-shadow;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Background image transition dynamics */
+.project-carousel-card .bg-cover {
+    opacity: 0.12 !important;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.project-carousel-card:hover .bg-cover {
+    opacity: 0.28 !important;
+    transform: scale(1.05) !important;
+}
+
+/* Custom color vignettes for each card */
+#carousel-card-payra .bg-gradient-to-t,
+#carousel-card-crane .bg-gradient-to-t,
+#carousel-card-tugboat .bg-gradient-to-t,
+#carousel-card-ferry .bg-gradient-to-t {
+    background: linear-gradient(to top, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 0.85) 65%, rgba(255, 255, 255, 0.2) 100%) !important;
+}
+
+/* Active card top marker glow */
+.project-carousel-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #F60000, transparent);
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1), left 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 15;
+}
+
+.project-carousel-card.active::after {
+    width: 80%;
+    left: 10%;
+}
+
+.project-carousel-card:hover {
+    border-color: rgba(246, 0, 0, 0.3) !important;
+    transform: translateY(-6px) translateZ(0) !important;
+    box-shadow: 0 20px 40px rgba(246, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+
+.project-carousel-card.active {
+    border-color: rgba(246, 0, 0, 0.45) !important;
+    box-shadow: 0 15px 35px rgba(246, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+
+.project-carousel-card h3 {
+    color: #1e293b !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 850 !important;
+    letter-spacing: -0.025em !important;
+    transition: color 0.4s ease !important;
+}
+
+.project-carousel-card:hover h3 {
+    color: #F60000 !important;
+}
+
+.project-carousel-card p {
+    color: #475569 !important;
+}
+
+/* Client bullet point layout */
+.project-carousel-card p.text-white {
+    color: #1e293b !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.project-carousel-card p.text-white::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: #F60000;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #F60000, 0 0 15px rgba(246, 0, 0, 0.4);
+    animation: activeBulletPulse 2s infinite alternate;
+}
+
+@keyframes activeBulletPulse {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1.25);
+        opacity: 1;
+    }
+}
+
+.project-carousel-card p.text-white\/45 {
+    color: #64748b !important;
+}
+
+.project-carousel-card .project-status-badge {
+    color: #d01c1c !important;
+    font-size: 8.5px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.18em !important;
+    background: #fef2f2 !important;
+    box-shadow: 0 4px 10px rgba(246, 0, 0, 0.05) !important;
+    border: 1px solid rgba(246, 0, 0, 0.2) !important;
+    padding: 0.35rem 0.9rem !important;
+}
+
+/* Technical HUD badge overlay items */
+.project-carousel-card .font-mono {
+    font-size: 8px !important;
+    letter-spacing: 0.15em !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    background: rgba(0, 0, 0, 0.03) !important;
+    color: #475569 !important;
+    transition: all 0.4s ease !important;
+}
+
+.project-carousel-card:hover .font-mono {
+    border-color: rgba(246, 0, 0, 0.25) !important;
+    color: #1e293b !important;
+    background: rgba(246, 0, 0, 0.04) !important;
+}
+
+/* Dynamic circular arrow icon button styling */
+.project-carousel-card span.w-10 {
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    color: #475569 !important;
+    background: rgba(0, 0, 0, 0.02) !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.project-carousel-card:hover span.w-10 {
+    color: #ffffff !important;
+    background-color: #F60000 !important;
+    border-color: transparent !important;
+    box-shadow: 0 0 15px rgba(246, 0, 0, 0.4) !important;
+    transform: translateX(4px) scale(1.08) !important;
+}
+
+/* Hero Section */
+main.main.bg-\[\#f8fafc\] #project-detail-hero {
+    border-bottom-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-detail-hero .bg-gradient-to-t {
+    background: linear-gradient(to top, #f8fafc 0%, rgba(248, 250, 252, 0.45) 60%, rgba(248, 250, 252, 0.1) 100%) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-detail-hero .bg-black\/40 {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-detail-hero h1 {
+    color: #1e293b !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-detail-hero .pulse-dot::after {
+    border-color: #F60000 !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-detail-hero .bg-white\/\[0\.04\] {
+    background-color: rgba(0, 0, 0, 0.03) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    color: #ff4d4d !important;
+}
+
+/* Quick Info Cards */
+main.main.bg-\[\#f8fafc\] #project-detail-hero .bg-\[\#0a0f14\]\/80 {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-detail-hero .bg-\[\#0a0f14\]\/80:hover {
+    border-color: rgba(246, 0, 0, 0.3) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-detail-hero .bg-\[\#0a0f14\]\/80 p.text-white\/40 {
+    color: #64748b !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-detail-hero .bg-\[\#0a0f14\]\/80 p.text-sm {
+    color: #1e293b !important;
+}
+
+/* HUD border in hero */
+main.main.bg-\[\#f8fafc\] #project-detail-hero .border-white\/\[0\.03\] {
+    border-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Overview Section */
+main.main.bg-\[\#f8fafc\] #project-specs-section {
+    background-color: #f8fafc !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section h2,
+main.main.bg-\[\#f8fafc\] #project-specs-section h3 {
+    color: #1e293b !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section p.text-white\/80 {
+    color: #475569 !important;
+}
+
+/* Timeline Cards */
+main.main.bg-\[\#f8fafc\] #project-specs-section .timeline-container::before {
+    background: linear-gradient(to bottom, #F60000, rgba(246, 0, 0, 0.1) 80%, transparent) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .timeline-dot {
+    border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .bg-white\/\[0\.01\] {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border-color: rgba(0, 0, 0, 0.05) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .bg-white\/\[0\.01\]:hover {
+    background-color: #ffffff !important;
+    border-color: rgba(246, 0, 0, 0.15) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .bg-white\/\[0\.01\] h4 {
+    color: #1e293b !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .bg-white\/\[0\.01\] p {
+    color: #64748b !important;
+}
+
+/* Diagnostic Specs Dashboard Cards */
+main.main.bg-\[\#f8fafc\] #project-specs-section .diag-card {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border-color: rgba(0, 0, 0, 0.06) !important;
+    border-left-color: rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .diag-card:hover {
+    background-color: #ffffff !important;
+    border-color: rgba(246, 0, 0, 0.15) !important;
+    border-left-color: #F60000 !important;
+    box-shadow: 0 10px 25px rgba(246, 0, 0, 0.08) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .diag-card h4 {
+    color: #1e293b !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .diag-card span.text-white\/40 {
+    color: #64748b !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .diag-card p.text-white\/50 {
+    color: #64748b !important;
+}
+
+/* Diagram Blueprint Card */
+main.main.bg-\[\#f8fafc\] #project-specs-section .bg-white\/\[0\.01\]\.border-white\/5 {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border-color: rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .bg-white\/\[0\.01\]\.border-white\/5 h4 {
+    color: #1e293b !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .bg-white\/\[0\.01\]\.border-white\/5 span.text-white\/30,
+main.main.bg-\[\#f8fafc\] #project-specs-section .bg-white\/\[0\.01\]\.border-white\/5 span.text-white\/60 {
+    color: #475569 !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .bg-white\/\[0\.01\]\.border-white\/5 .bg-white\/\[0\.02\] {
+    background-color: rgba(0, 0, 0, 0.02) !important;
+    border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .bg-white\/\[0\.01\]\.border-white\/5 .bg-white\/\[0\.02\]:hover {
+    border-color: rgba(246, 0, 0, 0.3) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .bg-white\/\[0\.01\]\.border-white\/5 line {
+    stroke: rgba(0, 0, 0, 0.1) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .bg-white\/\[0\.01\]\.border-white\/5 line.flow-line {
+    stroke: #F60000 !important;
+}
+
+/* Project Gallery Section */
+main.main.bg-\[\#f8fafc\] section.bg-\[\#080b0f\]\.border-t {
+    background-color: #f1f5f9 !important;
+    border-top-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+main.main.bg-\[\#f8fafc\] section.bg-\[\#080b0f\]\.border-t h2 {
+    color: #1e293b !important;
+}
+
+main.main.bg-\[\#f8fafc\] section.bg-\[\#080b0f\]\.border-t p.text-white\/50 {
+    color: #475569 !important;
+}
+
+/* Gallery Filter Tabs */
+main.main.bg-\[\#f8fafc\] .aci-filter-container {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border-color: rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
+}
+
+main.main.bg-\[\#f8fafc\] .aci-filter-tab {
+    color: #475569 !important;
+}
+
+main.main.bg-\[\#f8fafc\] .aci-filter-tab:hover {
+    color: #1e293b !important;
+}
+
+main.main.bg-\[\#f8fafc\] .aci-filter-tab.active {
+    background-color: #F60000 !important;
+    color: #ffffff !important;
+}
+
+main.main.bg-\[\#f8fafc\] .aci-filter-count {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    color: #475569 !important;
+}
+
+main.main.bg-\[\#f8fafc\] .aci-filter-tab.active .aci-filter-count {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+}
+
+/* Gallery items */
+main.main.bg-\[\#f8fafc\] .aci-gallery-item {
+    background-color: #ffffff !important;
+    border-color: rgba(0, 0, 0, 0.05) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important;
+}
+
+main.main.bg-\[\#f8fafc\] .aci-gallery-item:hover {
+    border-color: rgba(246, 0, 0, 0.25) !important;
+    box-shadow: 0 20px 40px rgba(246, 0, 0, 0.08) !important;
+}
+
+main.main.bg-\[\#f8fafc\] .aci-gallery-badge {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    color: #475569 !important;
+}
+
+/* Animated Wave fills for Light Theme */
+main.main.bg-\[\#f8fafc\] #project-specs-section .animate-wave-back {
+    fill: rgba(39, 168, 68, 0.12) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .animate-wave-mid {
+    fill: rgba(0, 191, 165, 0.15) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .animate-wave-front {
+    fill: rgba(39, 168, 68, 0.22) !important;
+}
+
+/* --- INTERACTIVE BLUEPRINT DIAGRAM SYSTEM --- */
+.blueprint-grid {
+    background-image:
+        radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 24px 24px, 24px 24px, 24px 24px;
+}
+
+@keyframes shaftRotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shaftDashScroll {
+    0% {
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+        stroke-dashoffset: -32;
+    }
+}
+
+@keyframes pistonBob1 {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(6px);
+    }
+}
+
+@keyframes pistonBob2 {
+
+    0%,
+    100% {
+        transform: translateY(6px);
+    }
+
+    50% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes bubbleDrift {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translate(35px, 2px);
+        opacity: 0;
+    }
+}
+
+/* Base Simulation Animations */
+.engine-piston-1,
+.engine-piston-3 {
+    animation: pistonBob1 var(--sim-piston-speed, 0.5s) ease-in-out infinite;
+    transform-origin: center top;
+}
+
+.engine-piston-2,
+.engine-piston-4 {
+    animation: pistonBob2 var(--sim-piston-speed, 0.5s) ease-in-out infinite;
+    transform-origin: center top;
+}
+
+.crank-pulley {
+    animation: shaftRotation var(--sim-pulley-speed, 1.8s) linear infinite;
+    transform-origin: 20px 42px;
+}
+
+.shaft-rotation {
+    animation: shaftDashScroll var(--sim-shaft-speed, 1.8s) linear infinite;
+}
+
+.gearbox-gear-1 {
+    animation: shaftRotation var(--sim-gear-speed-1, 6s) linear infinite;
+    transform-origin: 45px 35px;
+}
+
+.gearbox-gear-2 {
+    animation: shaftRotation var(--sim-gear-speed-2, 4s) linear infinite reverse;
+    transform-origin: 68px 35px;
+}
+
+.propeller-blade {
+    animation: shaftRotation var(--sim-shaft-speed, 1.8s) linear infinite;
+    transform-origin: 30px 40px;
+}
+
+.bubble-p-1 {
+    animation: bubbleDrift var(--sim-bubble-speed, 1.2s) linear infinite;
+}
+
+.bubble-p-2 {
+    animation: bubbleDrift var(--sim-bubble-speed, 1.2s) linear infinite;
+    animation-delay: 0.4s;
+}
+
+.bubble-p-3 {
+    animation: bubbleDrift var(--sim-bubble-speed, 1.2s) linear infinite;
+    animation-delay: 0.8s;
+}
+
+/* Tooltip Card Styling */
+.spec-tooltip {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Light Theme Overrides for Blueprint */
+main.main.bg-\[\#f8fafc\] .blueprint-container {
+    background-color: rgba(255, 255, 255, 0.85) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .blueprint-grid {
+    background-image:
+        radial-gradient(circle, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+        linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px) !important;
+}
+
+main.main.bg-\[\#f8fafc\] .blueprint-container h4 {
+    color: #475569 !important;
+}
+
+main.main.bg-\[\#f8fafc\] .blueprint-container svg {
+    color: rgba(71, 85, 105, 0.35) !important;
+}
+
+main.main.bg-\[\#f8fafc\] .blueprint-container svg .engine-piston-1,
+main.main.bg-\[\#f8fafc\] .blueprint-container svg .engine-piston-2,
+main.main.bg-\[\#f8fafc\] .blueprint-container svg .engine-piston-3,
+main.main.bg-\[\#f8fafc\] .blueprint-container svg .engine-piston-4,
+main.main.bg-\[\#f8fafc\] .blueprint-container svg .crank-pulley,
+main.main.bg-\[\#f8fafc\] .blueprint-container svg .gearbox-gear-1,
+main.main.bg-\[\#f8fafc\] .blueprint-container svg .gearbox-gear-2,
+main.main.bg-\[\#f8fafc\] .blueprint-container svg .propeller-blade {
+    color: rgba(71, 85, 105, 0.7) !important;
+}
+
+main.main.bg-\[\#f8fafc\] .blueprint-container .group:hover svg {
+    color: #F60000 !important;
+}
+
+main.main.bg-\[\#f8fafc\] .blueprint-container .text-white\/70 {
+    color: #1e293b !important;
+}
+
+main.main.bg-\[\#f8fafc\] .blueprint-container .text-white\/30 {
+    color: #64748b !important;
+}
+
+main.main.bg-\[\#f8fafc\] .blueprint-container .border-white\/5 {
+    border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+main.main.bg-\[\#f8fafc\] .blueprint-container .bg-white\/5 {
+    background-color: rgba(0, 0, 0, 0.04) !important;
+    color: #475569 !important;
+}
+
+main.main.bg-\[\#f8fafc\] .blueprint-container .bg-white\/\[0\.01\] {
+    background-color: rgba(0, 0, 0, 0.015) !important;
+}
+
+main.main.bg-\[\#f8fafc\] .blueprint-container svg line[stroke="rgba(255,255,255,0.08)"] {
+    stroke: rgba(0, 0, 0, 0.08) !important;
+}
+
+main.main.bg-\[\#f8fafc\] .blueprint-container svg rect[fill="#080b0f"],
+main.main.bg-\[\#f8fafc\] .blueprint-container svg circle[fill="#080b0f"] {
+    fill: #f8fafc !important;
+}
+
+main.main.bg-\[\#f8fafc\] .blueprint-container .spec-tooltip {
+    background-color: rgba(255, 255, 255, 0.98) !important;
+    border-color: rgba(246, 0, 0, 0.25) !important;
+    color: #1e293b !important;
+}
+
+main.main.bg-\[\#f8fafc\] .blueprint-container .spec-tooltip span {
+    color: #475569 !important;
+}
+
+main.main.bg-\[\#f8fafc\] .blueprint-container .spec-tooltip span.text-white {
+    color: #1e293b !important;
+}
+
+main.main.bg-\[\#f8fafc\] .blueprint-container .text-white\/40 {
+    color: #475569 !important;
+}
+
+/* --- RESPONSIVE WAVE CONTAINER & SAILING SHIPS --- */
+.responsive-wave-container {
+    height: 180px !important;
+}
+
+@media (max-width: 1024px) {
+    .responsive-wave-container {
+        height: 130px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .responsive-wave-container {
+        height: 220px !important;
+    }
+}
+
+/* Sailing Ship styling overrides for responsive sizes and heights */
+.sailing-ship {
+    position: absolute !important;
+}
+
+.sailing-ship-1 {
+    bottom: 8% !important;
+    width: 9rem !important;
+    /* 144px */
+    height: 4.5rem !important;
+    /* 72px */
+}
+
+.sailing-ship-2 {
+    bottom: 22% !important;
+    width: 7rem !important;
+    /* 112px */
+    height: 3.5rem !important;
+    /* 56px */
+}
+
+.sailing-ship-3 {
+    bottom: 32% !important;
+    width: 5.5rem !important;
+    /* 88px */
+    height: 2.75rem !important;
+    /* 44px */
+}
+
+.sailing-ship-4 {
+    bottom: 40% !important;
+    width: 4rem !important;
+    /* 64px */
+    height: 2rem !important;
+    /* 32px */
+}
+
+/* Scale down ships on tablets */
+@media (max-width: 1024px) {
+    .sailing-ship-1 {
+        width: 7rem !important;
+        height: 3.5rem !important;
+    }
+
+    .sailing-ship-2 {
+        width: 5.5rem !important;
+        height: 2.75rem !important;
+    }
+
+    .sailing-ship-3 {
+        width: 4.25rem !important;
+        height: 2.1rem !important;
+    }
+
+    .sailing-ship-4 {
+        width: 3rem !important;
+        height: 1.5rem !important;
+    }
+}
+
+/* Scale down ships on mobile devices */
+@media (max-width: 768px) {
+    .sailing-ship-1 {
+        width: 7.5rem !important;
+        height: 3.75rem !important;
+        bottom: 8% !important;
+    }
+
+    .sailing-ship-2 {
+        width: 6rem !important;
+        height: 3rem !important;
+        bottom: 22% !important;
+    }
+
+    .sailing-ship-3 {
+        width: 4.5rem !important;
+        height: 2.25rem !important;
+        bottom: 32% !important;
+    }
+
+    .sailing-ship-4 {
+        width: 3.25rem !important;
+        height: 1.625rem !important;
+        bottom: 38% !important;
+    }
+}
+
+/* Ensure waves are beautifully visible on all pages and themes */
+.animate-wave-back {
+    fill: rgba(39, 168, 68, 0.12) !important;
+}
+
+.animate-wave-mid {
+    fill: rgba(0, 191, 165, 0.16) !important;
+}
+
+.animate-wave-front {
+    fill: rgba(39, 168, 68, 0.22) !important;
+}
+
+/* =============================================
+   MOBILE RESPONSIVENESS OVERRIDES (MODAL MENU)
+   ============================================= */
+@media (max-width: 900px) {
+
+    header.header_v2 #dropDownMenu,
+    #dropDownMenu {
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        display: block !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+    }
+
+    .menu-panel_v2 {
+        height: auto !important;
+        min-height: 100vh !important;
+        max-height: none !important;
+        display: block !important;
+        padding-top: 5rem !important;
+        padding-bottom: 3rem !important;
+        overflow: visible !important;
+        overflow-y: visible !important;
+        position: relative !important;
+        transform: none !important;
+        width: 100% !important;
+    }
+
+    .custom-modal-shell {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+    }
+
+    .custom-modal-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        display: block !important;
+    }
+
+    .custom-modal-left,
+    .custom-modal-right {
+        width: 100% !important;
+        display: block !important;
+    }
+
+    /* Premium Centered Layout for Mobile Modal Headers */
+    .custom-modal-left .logo-holder {
+        display: flex !important;
+        justify-content: center !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    .custom-modal-left h2 {
+        text-align: center !important;
+        font-size: 1.6rem !important;
+        line-height: 1.3 !important;
+        margin-top: 1rem !important;
+    }
+
+    .modal-intro {
+        text-align: center !important;
+        font-size: 0.85rem !important;
+        margin-top: 0.75rem !important;
+        margin-bottom: 2rem !important;
+        color: rgba(255, 255, 255, 0.5) !important;
+        line-height: 1.5 !important;
+    }
+
+    /* Sleek Navigation Pills on Mobile */
+    .modal-nav-list {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+        margin-bottom: 2.5rem !important;
+    }
+
+    .modal-nav-link {
+        font-size: 1.1rem !important;
+        padding: 14px 20px !important;
+        border-radius: 14px !important;
+        background: rgba(255, 255, 255, 0.04) !important;
+        border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    }
+
+    .modal-nav-link:hover {
+        padding-left: 28px !important;
+        transform: translateX(4px) !important;
+    }
+
+    /* Compact, Center-Aligned Glass Contact Card */
+    .modal-contact-card {
+        padding: 2rem 1.5rem !important;
+        border-radius: 24px !important;
+        text-align: center !important;
+        background: rgba(15, 22, 33, 0.55) !important;
+    }
+
+    .modal-contact-label {
+        font-size: 0.7rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    .modal-contact-phone {
+        font-size: 1.25rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    .modal-contact-email {
+        font-size: 0.95rem !important;
+    }
+
+    .modal-cta-btn {
+        margin-top: 1.5rem !important;
+        padding: 10px 24px !important;
+        font-size: 0.85rem !important;
+        width: auto !important;
+        display: inline-flex !important;
+    }
+
+    .modal-close-btn {
+        top: 16px !important;
+        right: 16px !important;
+        width: 42px !important;
+        height: 42px !important;
+        position: fixed !important;
+    }
+}
+
+/* =============================================
+   MOBILE RESPONSIVENESS OVERRIDES (SLIDER & HEADER)
+   ============================================= */
+@media (max-width: 768px) {
+
+    /* Header Capsule Spacing */
+    header.header_v2 {
+        width: 96% !important;
+        left: 2% !important;
+        top: 0.75rem !important;
+        padding: 0.5rem 1rem !important;
+        border-radius: 20px !important;
+        height: 3.75rem !important;
+    }
+
+    header.header_v2 .logo-holder img {
+        height: 36px !important;
+    }
+
+    /* Slider Overlay Positioning & Padding */
+    .hero_v2-home .overlay {
+        padding-bottom: 8.5rem !important;
+        align-items: flex-end !important;
+    }
+
+    .splide__slide .overlay .container-fluid {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    .splide__slide .overlay .container-fluid>.flex {
+        padding: 1.25rem 1.5rem !important;
+        margin: 0 !important;
+        border-radius: 16px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Typography Responsive Adjustments */
+    .hero_v2-home .text-heading-xs {
+        font-size: 0.7rem !important;
+        letter-spacing: 0.15rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    .hero_v2-home .text-heading-1,
+    .splide__slide .overlay .text-heading-1 p {
+        font-size: 1.35rem !important;
+        line-height: 1.35 !important;
+    }
+
+    /* Bottom Glass Slider Navigation Bar */
+    .hero_v2-home-nav {
+        bottom: 0.75rem !important;
+        left: 2% !important;
+        width: 96% !important;
+        padding: 0.75rem 1rem !important;
+        border-radius: 20px !important;
+    }
+
+    .hero_v2-home-nav .slide-link {
+        margin-top: 0.5rem !important;
+        height: 38px !important;
+        padding: 0 0.5rem !important;
+        border-left: none !important;
+        /* Remove border divider on mobile */
+    }
+
+    .hero_v2-home-nav .slide-link p {
+        font-size: 0.75rem !important;
+        margin-left: 0.5rem !important;
+    }
+
+    .hero_v2-home-nav .arrow-right-icon svg {
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    /* Pagination Indicator Dots */
+    .hero_v2-home-nav .slide-index {
+        width: 2rem !important;
+        height: 2rem !important;
+        font-size: 0.75rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    header.header_v2 {
+        top: 0.5rem !important;
+        height: 3.5rem !important;
+        padding: 0.5rem 0.75rem !important;
+    }
+
+    header.header_v2 .logo-holder img {
+        height: 32px !important;
+    }
+
+    .splide__slide .overlay .container-fluid>.flex {
+        padding: 1rem 1.15rem !important;
+    }
+
+    .hero_v2-home .text-heading-1,
+    .splide__slide .overlay .text-heading-1 p {
+        font-size: 1.15rem !important;
+    }
+
+    .hero_v2-home .overlay {
+        padding-bottom: 8.2rem !important;
+    }
+
+    .hero_v2-home-nav {
+        padding: 0.5rem 0.75rem !important;
+        bottom: 0.5rem !important;
+    }
+}
+
+/* =============================================
+   GLOBAL BRAND GREEN HOVER & ACCENT OVERRIDES
+   ============================================= */
+/* Header Scrolled Nav Link Hover */
+header.header_v2.header-scrolled nav a:hover,
+header.header_v2.header-scrolled .nav-main a:hover {
+    color: #27a844 !important;
+}
+
+header.header_v2.header-scrolled nav a::after,
+header.header_v2.header-scrolled .nav-main a::after {
+    background: #27a844 !important;
+}
+
+/* Slider progress and nav links hover */
+#custom-slider-progress {
+    background-color: #27a844 !important;
+}
+
+.hero_v2-home-nav .slide-link:hover .arrow-right-icon,
+.hero_v2-home-nav .hover-arrow-rotate:hover .arrow-right-icon {
+    color: #27a844 !important;
+}
+
+/* Close/search modal button hovers */
+.modal-close-btn:hover,
+.search-modal-close-btn:hover {
+    color: #27a844 !important;
+    background: rgba(39, 168, 68, 0.1) !important;
+    border-color: rgba(39, 168, 68, 0.3) !important;
+    box-shadow: 0 10px 20px rgba(39, 168, 68, 0.15) !important;
+}
+
+/* Projects timeline line and dots */
+main.main.bg-\[\#f8fafc\] #project-specs-section .timeline-container::before {
+    background: linear-gradient(to bottom, #27a844, rgba(39, 168, 68, 0.1) 80%, transparent) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .bg-white\/\[0\.01\]:hover {
+    border-color: rgba(39, 168, 68, 0.25) !important;
+}
+
+/* Diagnostic dashboard cards hover border & glow */
+main.main.bg-\[\#f8fafc\] #project-specs-section .diag-card:hover {
+    border-color: rgba(39, 168, 68, 0.2) !important;
+    border-left-color: #27a844 !important;
+    box-shadow: 0 10px 25px rgba(39, 168, 68, 0.08) !important;
+}
+
+/* Blueprint section animations */
+main.main.bg-\[\#f8fafc\] .blueprint-container .group:hover svg {
+    color: #27a844 !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .bg-white\/\[0\.01\]\.border-white\/5 .bg-white\/\[0\.02\]:hover {
+    border-color: rgba(39, 168, 68, 0.4) !important;
+}
+
+main.main.bg-\[\#f8fafc\] #project-specs-section .bg-white\/\[0\.01\]\.border-white\/5 line.flow-line {
+    stroke: #27a844 !important;
+}
+
+/* Active tab state */
+main.main.bg-\[\#f8fafc\] .aci-filter-tab.active {
+    background-color: #27a844 !important;
+}
+
+/* Scroll Indicators and details (like mouse scroll wheel crimson) */
+.animate-scroll-wheel {
+    background-color: #27a844 !important;
+}
+
+.mouse-scroll-indicator:hover {
+    border-color: #27a844 !important;
+}
+
+/* Ensure reveal section is exactly 100dvh and responsive on mobile devices */
+.reveal-screen-container {
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    overflow: hidden !important;
+    position: relative !important;
+}
+
+@media (max-width: 768px) {
+    .reveal-screen-container h2[data-reveal-icon-v2-target="title"] {
+        font-size: clamp(1.8rem, 8.5vw, 2.65rem) !important;
+        line-height: 1.7 !important;
+        margin-top: 2.5rem !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+    }
+    
+    .reveal-screen-container .logo-reveal-container {
+        margin-bottom: 1.25rem !important;
+    }
+    
+    .reveal-screen-container .logo-reveal-container img {
+        max-height: 85px !important;
+        width: auto !important;
+    }
+
+    /* Shift content up on mobile so there's plenty of space at the bottom for waves & ships */
+    .reveal-screen-container > div.flex-col {
+        justify-content: flex-start !important;
+        padding-top: 15vh !important;
+        height: calc(100% - 220px) !important;
+    }
+
+    /* Make waves more vibrant and visible on mobile screens */
+    .reveal-screen-container .animate-wave-back {
+        fill: rgba(39, 168, 68, 0.18) !important;
+    }
+    .reveal-screen-container .animate-wave-mid {
+        fill: rgba(0, 191, 165, 0.24) !important;
+    }
+    .reveal-screen-container .animate-wave-front {
+        fill: rgba(39, 168, 68, 0.3) !important;
+    }
+}

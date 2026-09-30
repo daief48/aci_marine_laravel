@@ -1,0 +1,43 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # 1. Directory Listing bondho kora (Security)
+    Options -Indexes -MultiViews
+
+    # 2. Sensitive core file & dotfiles direct access block (Security Protection)
+    RewriteRule ^(\.env|\.git|composer\.(json|lock)|package(-lock)?\.json|artisan|phpunit\.xml|vite\.config\.js) - [F,L,NC]
+    RewriteRule ^(app|bootstrap|config|database|resources|routes|storage|tests)/ - [F,L,NC]
+
+    # 3. Handle Authorization Header (API/Auth tokens support)
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # 4. Handle X-XSRF-Token Header
+    RewriteCond %{HTTP:x-xsrf-token} .
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+
+    # 5. URL er sheshe trailing slash thakle age clean URL e redirect
+    # (jemon /about/ → /about) — /public/ URL expose jeno na hoy
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # 6. Shob request public/ folder er moddhe diye jay (Single Entry Point).
+    # public/.htaccess (Laravel default) asset file thakle direct serve kore,
+    # na hole index.php te pathay. Kono DOCUMENT_ROOT/-f check nai — tai
+    # cPanel er je kono jaygay (public_html, addon domain, subfolder) zip
+    # extract korlei site chole, structure bodlate hoy na.
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Fallback direct access block jodi mod_rewrite na thake
+<FilesMatch "^(\.env|\.env\..*|composer\.(json|lock)|package(-lock)?\.json|artisan|phpunit\.xml|vite\.config\.js|\.gitignore|\.gitattributes|\.editorconfig|.*\.md)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>

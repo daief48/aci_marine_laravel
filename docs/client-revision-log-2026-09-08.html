@@ -1,0 +1,758 @@
+<title>ACI Marine Revision Log</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
+
+<style>
+  :root {
+    --ground:      #f4f7f4;
+    --surface:     #ffffff;
+    --surface-alt: #eef2ee;
+    --ink:         #131a15;
+    --ink-soft:    #5b6660;
+    --ink-faint:   #8c968f;
+    --rule:        #dce3dd;
+    --rule-soft:   #e8ede8;
+    --accent:      #1b7430;
+    --accent-soft: #e4f0e6;
+    --flag:        #a83a22;
+    --flag-soft:   #f8ebe6;
+    --shadow:      0 1px 2px rgba(19, 26, 21, .05);
+
+    --serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --mono:  "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:      #0e1310;
+      --surface:     #161d19;
+      --surface-alt: #1c2520;
+      --ink:         #e7ece8;
+      --ink-soft:    #9aa59e;
+      --ink-faint:   #6e7973;
+      --rule:        #2a352e;
+      --rule-soft:   #212b25;
+      --accent:      #57bd72;
+      --accent-soft: #1a2c1f;
+      --flag:        #e0866c;
+      --flag-soft:   #2d1d17;
+      --shadow:      0 1px 2px rgba(0, 0, 0, .3);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:      #0e1310;
+    --surface:     #161d19;
+    --surface-alt: #1c2520;
+    --ink:         #e7ece8;
+    --ink-soft:    #9aa59e;
+    --ink-faint:   #6e7973;
+    --rule:        #2a352e;
+    --rule-soft:   #212b25;
+    --accent:      #57bd72;
+    --accent-soft: #1a2c1f;
+    --flag:        #e0866c;
+    --flag-soft:   #2d1d17;
+    --shadow:      0 1px 2px rgba(0, 0, 0, .3);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15.5px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .sheet {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 4rem 1.75rem 6rem;
+  }
+
+  /* ── Masthead ─────────────────────────────────────── */
+
+  .masthead {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .kicker {
+    font-family: var(--mono);
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.9rem, 5vw, 2.6rem);
+    line-height: 1.15;
+    letter-spacing: -.015em;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .standfirst {
+    color: var(--ink-soft);
+    max-width: 42rem;
+    margin: 0;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem 2rem;
+    font-family: var(--mono);
+    font-size: .72rem;
+    color: var(--ink-faint);
+    letter-spacing: .02em;
+  }
+
+  .meta b {
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  /* ── Section headings ─────────────────────────────── */
+
+  .section-head {
+    font-family: var(--mono);
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    align-items: center;
+    gap: .9rem;
+    margin: 3.5rem 0 1.75rem;
+  }
+
+  .section-head::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* ── Ledger of requests ───────────────────────────── */
+
+  .ledger {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .item {
+    display: grid;
+    grid-template-columns: 2.75rem 1fr;
+    gap: 0 1.25rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+
+  .item:first-child { padding-top: .5rem; }
+
+  .item-num {
+    font-family: var(--mono);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .item-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: .5rem .75rem;
+    margin-bottom: .5rem;
+  }
+
+  .item-head h2 {
+    font-family: var(--serif);
+    font-size: 1.18rem;
+    font-weight: 600;
+    letter-spacing: -.005em;
+    margin: 0;
+  }
+
+  .chip {
+    font-family: var(--mono);
+    font-size: .63rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: .22rem .5rem;
+    border-radius: 3px;
+    white-space: nowrap;
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+
+  .chip.ask {
+    background: var(--flag-soft);
+    color: var(--flag);
+  }
+
+  .item-body { grid-column: 2; }
+
+  .item-body p {
+    margin: 0 0 .7rem;
+    color: var(--ink-soft);
+  }
+
+  .item-body p:last-child { margin-bottom: 0; }
+
+  .item-body strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .quoted {
+    font-family: var(--serif);
+    color: var(--ink);
+  }
+
+  /* Where-to-find-it path line */
+  .path {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: .45rem;
+    font-family: var(--mono);
+    font-size: .74rem;
+    color: var(--ink-soft);
+    background: var(--surface-alt);
+    border-left: 2px solid var(--accent);
+    padding: .5rem .75rem;
+    margin-top: .85rem;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .path .lbl {
+    color: var(--ink-faint);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-size: .63rem;
+  }
+
+  .path .sep { color: var(--ink-faint); }
+
+  /* Inline note under an item */
+  .note {
+    display: block;
+    font-size: .88rem;
+    color: var(--ink-soft);
+    border-top: 1px dotted var(--rule);
+    padding-top: .7rem;
+    margin-top: .85rem;
+  }
+
+  .note b {
+    font-family: var(--mono);
+    font-size: .63rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--flag);
+    display: block;
+    margin-bottom: .2rem;
+  }
+
+  /* ── Steps (video upload) ─────────────────────────── */
+
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    padding: 0;
+    margin: .9rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+
+  .steps li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 1.75rem;
+    color: var(--ink-soft);
+    font-size: .93rem;
+  }
+
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: .1rem;
+    font-family: var(--mono);
+    font-size: .68rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-soft);
+    width: 1.15rem;
+    height: 1.15rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .steps code, .inline-code {
+    font-family: var(--mono);
+    font-size: .82em;
+    background: var(--surface-alt);
+    padding: .1em .35em;
+    border-radius: 3px;
+    color: var(--ink);
+  }
+
+  /* ── Spec table ───────────────────────────────────── */
+
+  .spec-wrap {
+    margin-top: 1.1rem;
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: var(--surface);
+  }
+
+  table.spec {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .85rem;
+  }
+
+  table.spec caption {
+    text-align: left;
+    font-family: var(--mono);
+    font-size: .63rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding: .7rem .9rem .55rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  table.spec th,
+  table.spec td {
+    text-align: left;
+    padding: .55rem .9rem;
+    border-bottom: 1px solid var(--rule-soft);
+    vertical-align: top;
+  }
+
+  table.spec tr:last-child th,
+  table.spec tr:last-child td { border-bottom: 0; }
+
+  table.spec th {
+    font-family: var(--mono);
+    font-size: .68rem;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    width: 38%;
+    white-space: nowrap;
+  }
+
+  table.spec td {
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+
+  table.spec td span {
+    display: block;
+    color: var(--ink-faint);
+    font-size: .78rem;
+    margin-top: .1rem;
+  }
+
+  /* ── Confirmation block ───────────────────────────── */
+
+  .asks {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .ask-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-top: 2px solid var(--flag);
+    border-radius: 0 0 4px 4px;
+    padding: 1.1rem 1.25rem;
+    box-shadow: var(--shadow);
+  }
+
+  .ask-card h3 {
+    font-family: var(--sans);
+    font-size: .97rem;
+    font-weight: 600;
+    margin: 0 0 .4rem;
+  }
+
+  .ask-card p {
+    margin: 0;
+    font-size: .91rem;
+    color: var(--ink-soft);
+  }
+
+  /* ── Admin map ────────────────────────────────────── */
+
+  .map {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+
+  .map-row {
+    display: grid;
+    grid-template-columns: minmax(11rem, 1fr) 1.6fr;
+    gap: 0 1rem;
+    padding: .7rem 1rem;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: .86rem;
+    align-items: baseline;
+  }
+
+  .map-row:last-child { border-bottom: 0; }
+
+  .map-row .where {
+    font-family: var(--mono);
+    font-size: .76rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .map-row .what { color: var(--ink-soft); }
+
+  /* ── Footer ───────────────────────────────────────── */
+
+  .signoff {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    font-size: .86rem;
+    color: var(--ink-faint);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: .75rem 2rem;
+  }
+
+  .signoff .mark {
+    font-family: var(--mono);
+    font-size: .68rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 34rem) {
+    .sheet { padding: 2.5rem 1.15rem 4rem; }
+    .item { grid-template-columns: 1.9rem 1fr; gap: 0 .8rem; }
+    .item-body { grid-column: 2; }
+    .map-row { grid-template-columns: 1fr; gap: .2rem; }
+  }
+</style>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <span class="kicker">ACI Marine &amp; Riverine · Website Revision Round</span>
+    <h1>Revision Log &amp; Handover Notes</h1>
+    <p class="standfirst">
+      All seven points from your feedback have been implemented and checked on the site.
+      Below is what changed for each one, where to manage it yourself from the admin panel,
+      and the two small things we need a word back on.
+    </p>
+    <div class="meta">
+      <span><b>Prepared for</b> Nisha — ACI Marine</span>
+      <span><b>Date</b> 8 September 2026</span>
+      <span><b>Scope</b> 7 requests</span>
+    </div>
+  </header>
+
+  <h2 class="section-head">Point-by-point</h2>
+
+  <div class="ledger">
+
+    <!-- 1 -->
+    <article class="item">
+      <div class="item-num">01</div>
+      <div class="item-body">
+        <div class="item-head">
+          <h2>Homepage hero title</h2>
+          <span class="chip">Updated</span>
+        </div>
+        <p>
+          The opening headline now reads <span class="quoted">“Thrusting Your Marine Aspiration
+          Forward.”</span> It keeps the existing word-by-word reveal animation, with
+          <em>Marine Aspiration</em> in the ACI green gradient and <em>Forward.</em> in the brand red,
+          so the emphasis sits the same way the old line did.
+        </p>
+        <span class="note">
+          <b>One thing to confirm</b>
+          The small label line above the headline in the video slider below still reads
+          “WE BUILD THE SHIPS OF TOMORROW &amp; TODAY”. We left it as-is since your note was about
+          the main headline. It is fully editable — tell us the wording you want, or change it
+          yourself under Homepage → Hero Slider.
+        </span>
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article class="item">
+      <div class="item-num">02</div>
+      <div class="item-body">
+        <div class="item-head">
+          <h2>Products tab in the navigation</h2>
+          <span class="chip">Added</span>
+        </div>
+        <p>
+          A <strong>Products</strong> tab now sits in the main navigation between <em>About Us</em>
+          and <em>Projects</em>. It has been added in three places so it works everywhere: the desktop
+          navigation bar, the mobile menu, and the “Products &amp; services” entry inside the dropdown
+          menu — which previously pointed nowhere.
+        </p>
+        <p>
+          All three open a new full Products page listing every category with the products under it,
+          each linking through to its own detail page.
+        </p>
+        <div class="path">
+          <span class="lbl">Live at</span>
+          <span>acimarine.com/products</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article class="item">
+      <div class="item-num">03</div>
+      <div class="item-body">
+        <div class="item-head">
+          <h2>Black product thumbnails on the homepage</h2>
+          <span class="chip">Fixed</span>
+        </div>
+        <p>
+          <strong>What was happening:</strong> the homepage cards were still pulling their thumbnail
+          images from the old <span class="inline-code">acimarine.com</span> server, which no longer
+          serves those files. The image failed to load, and each card’s dark gradient overlay — the
+          shading that makes the category label readable — was left sitting over an empty box. That is
+          the solid black you were seeing. The individual product pages used a different image source,
+          which is exactly why those looked correct.
+        </p>
+        <p>
+          <strong>What we changed:</strong> thumbnails now load from your own server, and the site
+          checks that the image file actually exists before using it, falling back to a known-good
+          image instead of an empty frame. Any thumbnail you upload from the admin panel is used
+          straight away.
+        </p>
+        <div class="path">
+          <span class="lbl">Manage</span>
+          <span>Products Catalog</span><span class="sep">→</span><span>Product Categories</span><span class="sep">→</span><span>Edit</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4 -->
+    <article class="item">
+      <div class="item-num">04</div>
+      <div class="item-body">
+        <div class="item-head">
+          <h2>Product reordering from the admin panel</h2>
+          <span class="chip">Fixed &amp; extended</span>
+        </div>
+        <p>
+          Reordering now takes effect on the live site. Rather than typing order numbers by hand, there
+          are two new <strong>drag-and-drop panels</strong>:
+        </p>
+        <ul class="steps">
+          <li><strong>Product Categories</strong> — sets the order of the six cards in the homepage
+            Products section. Drag the rows, then press <em>Save Order to Homepage</em>.</li>
+          <li><strong>Products</strong> — a separate panel per category, setting the order of the
+            product names listed inside each card and on the category page.</li>
+        </ul>
+        <p style="margin-top:.7rem">
+          Saved changes appear immediately on the homepage, the Products page, and each category page —
+          no cache clearing needed.
+        </p>
+        <div class="path">
+          <span class="lbl">Manage</span>
+          <span>Products Catalog</span><span class="sep">→</span><span>Product Categories</span><span class="sep">/</span><span>Products</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 5 -->
+    <article class="item">
+      <div class="item-num">05</div>
+      <div class="item-body">
+        <div class="item-head">
+          <h2>Updating the homepage video</h2>
+          <span class="chip">Ready — you can do this yourself</span>
+        </div>
+        <p>
+          You no longer need to send us the file. The Hero Slider screen now takes a direct upload, and
+          shows a live preview of how the video will look behind the headline before you save.
+        </p>
+        <ol class="steps">
+          <li>Open <strong>Admin → Homepage → Hero Slider</strong>.</li>
+          <li>In the <em>Background Video Source</em> box, switch to the <strong>Upload MP4 File</strong> tab.</li>
+          <li>Click the upload area and choose your file. The name appears once selected.</li>
+          <li>Check the <em>Live Screen Mockup</em> preview on the right.</li>
+          <li>Press <strong>Save All Changes</strong> at the top.</li>
+        </ol>
+        <p style="margin-top:.8rem">
+          The alternative <em>Video URL</em> tab still accepts a Vimeo or YouTube embed link if you would
+          rather stream it. Whichever option you save last is the one that goes live.
+        </p>
+
+        <div class="spec-wrap">
+          <table class="spec">
+            <caption>Recommended file specification</caption>
+            <tbody>
+              <tr>
+                <th scope="row">Format</th>
+                <td>MP4, H.264 codec<span>WebM and OGG are also accepted</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Resolution</th>
+                <td>1920 × 1080 (Full HD)<span>4K adds load time without visible gain — the video sits behind text</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Length</th>
+                <td>10 – 20 seconds<span>It loops continuously, so a seamless start and end works best</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Audio</th>
+                <td>None — muted<span>Browsers block autoplay with sound, so any audio track is dead weight</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Maximum size</th>
+                <td>100 MB<span>We recommend staying under 25 MB so the homepage stays fast on mobile</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Framing</th>
+                <td>Keep the lower third calm<span>The headline and button sit over the bottom of the frame</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+
+    <!-- 6 -->
+    <article class="item">
+      <div class="item-num">06</div>
+      <div class="item-body">
+        <div class="item-head">
+          <h2>Dynamic Authorized Partnerships — About page</h2>
+          <span class="chip">Built</span>
+        </div>
+        <p>
+          Partnerships are no longer hard-coded. There is a new <strong>Authorized Partners</strong>
+          section in the admin sidebar where you can add, edit, reorder and remove partners yourself.
+          MHIET / Mitsubishi is now simply the first record in that list.
+        </p>
+        <p>Each partner holds:</p>
+        <ul class="steps">
+          <li>Partner name and role subtitle — e.g. <em>MHIET Japan</em> / <em>Global Engineering &amp; Technology</em></li>
+          <li>Badge text — e.g. <em>Authorized Distributor</em>, <em>Exclusive Partner</em></li>
+          <li>Established year, logo upload, partnership description, website link</li>
+          <li>Display order, plus an active toggle to hide a partner without deleting it</li>
+        </ul>
+        <div class="path">
+          <span class="lbl">Manage</span>
+          <span>Authorized Partners</span><span class="sep">→</span><span>Add / Edit</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 7 -->
+    <article class="item">
+      <div class="item-num">07</div>
+      <div class="item-body">
+        <div class="item-head">
+          <h2>Authorized Partners on the homepage</h2>
+          <span class="chip">Added</span>
+        </div>
+        <p>
+          A new <strong>Authorized Partnerships</strong> section now appears on the homepage, directly
+          below the Products section, using the same records as the About page. Add or edit a partner
+          once and it updates in both places — and on the Contact page.
+        </p>
+        <p>
+          If no partner is marked active, the section hides itself entirely rather than leaving an
+          empty band on the page.
+        </p>
+      </div>
+    </article>
+
+  </div>
+
+  <h2 class="section-head">Needs a word back from you</h2>
+
+  <div class="asks">
+    <div class="ask-card">
+      <h3>The label line above the video-slider headline</h3>
+      <p>
+        It still reads “WE BUILD THE SHIPS OF TOMORROW &amp; TODAY”. Should it change to match the new
+        headline, stay as it is, or become something else? Send us the wording and we will set it —
+        or change it yourself under Homepage → Hero Slider.
+      </p>
+    </div>
+    <div class="ask-card">
+      <h3>Upload limit on the hosting account</h3>
+      <p>
+        The panel accepts video files up to 100 MB. Some hosting plans cap uploads lower than that, in
+        which case a large file can fail quietly. If your first upload does not go through, send it to
+        us and we will place it directly and raise the limit.
+      </p>
+    </div>
+  </div>
+
+  <h2 class="section-head">Where things live in the admin panel</h2>
+
+  <div class="map">
+    <div class="map-row">
+      <span class="where">Homepage → Hero Slider</span>
+      <span class="what">Background video upload, headline slides, slide buttons</span>
+    </div>
+    <div class="map-row">
+      <span class="where">Products Catalog → Product Categories</span>
+      <span class="what">The six homepage cards — image, title, tag, and card order</span>
+    </div>
+    <div class="map-row">
+      <span class="where">Products Catalog → Products</span>
+      <span class="what">Individual products, their detail pages, and order within each category</span>
+    </div>
+    <div class="map-row">
+      <span class="where">Authorized Partners</span>
+      <span class="what">Partner records shown on the homepage, About page and Contact page</span>
+    </div>
+  </div>
+
+  <div class="signoff">
+    <span>Please review the live site and send across anything else you would like adjusted.</span>
+    <span class="mark">Revision Round 01 · Closed pending confirmation</span>
+  </div>
+
+</div>
